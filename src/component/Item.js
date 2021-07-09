@@ -1,21 +1,21 @@
 import { React, useState, useEffect } from 'react'
-import { observer } from 'mobx-react';
+import { observer ,inject} from 'mobx-react';
 
 
-const Item = observer((props) => {
+const Item =inject("MyInventory") (observer((props) => {
 
 
     const item = props.item
 
     function buyItem() {
-        props.store.buyItem(props.item.name)
+        props.MyInventory.buyItem(props.item.name)
 
 
 
     }
     function changePrice(){
         const newPrice=prompt('enter your new price')
-        props.store.changePrice(props.item.name,parseInt(newPrice))
+        props.MyInventory.changePrice(props.item.name,parseInt(newPrice))
     }
     return (
 
@@ -32,7 +32,7 @@ const Item = observer((props) => {
 
         </li>
     )
-})
+}))
 export default Item
 
 

@@ -5,17 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Inventory} from './store/Inventory'
 import { Item } from './store/Item';
+import { Provider } from 'mobx-react'
 
 const item1= new Item("knife")
 const item2= new Item("knife number 2 ")
 const MyInventory=new Inventory()
 MyInventory.listItem.push(item1)
 MyInventory.listItem.push(item2)
+const store={MyInventory}
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App store={MyInventory}/>
+  <Provider {...store}> <App /></Provider>
+   
   </React.StrictMode>,
   document.getElementById('root')
 );
