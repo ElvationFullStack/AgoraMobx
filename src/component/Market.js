@@ -1,24 +1,18 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import  Item  from '../component/Item'
+import { observer } from 'mobx-react';
 
 
-export default function Market(props) {
+const Market= observer(  (props) =>{
     console.log(" inside Market ", props.store.listItem)
     const [itemInput, setItemInput] = useState("")
     const[list,setList]=useState([])
 
-useEffect(()=>{
-    setList(props.store.listItem)
-},[])
-useEffect(()=>{
-    
-},[list])
 
       function addItem(){
 
         props.store.addItem(itemInput)
-        setItemInput("")
 
     }
     return (
@@ -29,7 +23,7 @@ useEffect(()=>{
                <ul>
                     {
                   
-                        list.map((i,ind)=> {
+                       props.store.listItem.map((i,ind)=> {
                             return (
                             <Item key={ind}
                                 item={i}
@@ -42,4 +36,5 @@ useEffect(()=>{
             </div>
         </div>
     )
-}
+})
+export default Market

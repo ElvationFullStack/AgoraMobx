@@ -14,7 +14,6 @@ import { Item } from './Item'
         })
     }
     addItem = (name) => {
-        console.log(" add item",name)
         
         const item = this.listItem.find(i => i.name === name)
         if (item === undefined) {
@@ -35,7 +34,6 @@ import { Item } from './Item'
 
     }
     changePrice = (name, price) => {
-        console.log(" reseved price ",price)
         const item = this.listItem.find(i => i.name === name)
         item.price = price
     }

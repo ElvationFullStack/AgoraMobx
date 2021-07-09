@@ -1,21 +1,13 @@
 import { React, useState, useEffect } from 'react'
+import { observer } from 'mobx-react';
 
 
-const Item = (props) => {
-    const [quantity, setQuantity] = useState(0)
-    const [price, setPrice] = useState(0)
+const Item = observer((props) => {
 
-    useEffect(() => {
-        setQuantity(props.item.quantity)
-    }, [])
-    useEffect(()=>{
 
-    },[quantity])
     const item = props.item
-    const store = props.store
 
     function buyItem() {
-        setQuantity(quantity-1)
         props.store.buyItem(props.item.name)
 
 
@@ -23,7 +15,6 @@ const Item = (props) => {
     }
     function changePrice(){
         const newPrice=prompt('enter your new price')
-        setPrice(newPrice)
         props.store.changePrice(props.item.name,parseInt(newPrice))
     }
     return (
@@ -41,7 +32,7 @@ const Item = (props) => {
 
         </li>
     )
-}
+})
 export default Item
 
 
